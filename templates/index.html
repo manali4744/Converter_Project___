@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PDF Conversion</title>
+	
+</head>
+<body>
+	<h1>PDF Conversion</h1>
+	<p>Select a PDF file to convert:</p>
+	<form id="pdf_form" enctype="multipart/form-data">
+		<input type="file" name="pdf_file"><br><br>
+		<button type="submit" id="pdf_to_docx">Convert to DOCX</button>
+		<button type="submit" id="pdf_to_excel">Convert to Excel</button>
+	</form>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#pdf_to_docx").click(function(e) {
+				e.preventDefault();
+				var formData = new FormData($("#pdf_form")[0]);
+				console.log(formData)
+				$.ajax({
+					type:"GET",
+					url:"convert_pdf_to_docx",
+					data:formData,
+					processData: false,
+					contentType: false
+				});
+			});
+		});
+	</script>
